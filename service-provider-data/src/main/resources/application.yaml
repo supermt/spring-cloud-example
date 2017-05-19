@@ -1,0 +1,24 @@
+# Spring Service Configuration
+server:
+  port: 9000
+spring:
+  application:
+    name: data-service
+
+# Spring MVC Configuration
+spring:
+  datasource:
+    username: root
+    password: MysqlRoot
+    url: jdbc:mysql://localhost:3306/db_sxf?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8    
+spring:
+  jpa: 
+    hibernate:
+      ddl-auto: create-drop
+
+# Eureka Client Configuration
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
