@@ -1,22 +1,26 @@
 # Spring Service Configuration
 server:
   port: 8000
-spring:
-  application:
-    name: data-service
+  tomcat:
+    uri-encoding: utf-8
 
 # Spring MVC Configuration
 spring:
-  datasource:
-    username: root
-    password: MysqlRoot
-    url: jdbc:mysql://localhost:3306/db_sxf?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8    
-spring:
-  jpa: 
+  application:
+    name: discover-eureka
+  jpa:
+    database: MYSQL
     hibernate:
       ddl-auto: create-drop
+      show-sql: true
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/db_book?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+#    driverClassName: com.mysql.jdbc.Driver
 
-# Eureka Client Configuration
+
+# Eureka Server Configuration
 
 eureka: 
   instance:
@@ -25,4 +29,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: 'http://${eureka.instance.hostname}:${server.port}/eureka/'
